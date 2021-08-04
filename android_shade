@@ -1,0 +1,21 @@
+#!/bin/bash
+
+backthefuckup() {
+  echo -e 'Backup :  '$backup_path$backup_file
+  archive_file=$backup_file-$(date +%Y%m%d).tgz
+  tar -czf $archive_path$archive_file $backup_path$backup_file
+  echo -e 'Save   :  '$archive_path$archive_file
+}
+#backup_path= #archive_path= #backup_file=
+#backthefuckup
+
+lnthis() {
+ if [ -z "$ln2b" ] || [ -z "$" ]
+   then
+     echo "ln fail: " $ln2b
+   fi
+}
+#lnthis
+
+#.bashrc
+

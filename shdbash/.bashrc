@@ -1,9 +1,8 @@
 
-#=============================================================== #
-#
-# Shadow idk memory bad
-#
-#
+#Shadow idk memory bad
+#   confidante
+#   mbyshadow@protonmail.com
+
 #   --Global definitions
 #   --Alias
 #     |-- ls
@@ -12,8 +11,7 @@
 #     |-- spelling..
 #   --Functions
 #     |-- Processes
-#
-#=============================================================== #
+
 
 # If not runninig interactively, don't do anything
   [ -z "$PS1" ] && return
