@@ -1,0 +1,24 @@
+# mby map some          ISP STATIC ADDR
+# mby note                    v
++-------------+      +-------------------+
+|table: filter| <-+  | table: nat        |
+|chain: INPUT |   |  | chain: PREROUTING |
++------+------+   |  +--------+----------+
+       v          |           v
+[local process]   |  *********************
+       |          +--+  Roting decision  +-->
+       v             *********************
+****************
+Routing decision
+****************
+       v             *********************
++--------------+  +--> Routing decision  <--+
+|table: nat    |  |  *********************
+|chain: OUTPUT |  |           |
++-----+--------+  |           v
+      |           |  +-------------------+
+      v           |  | table: nat        |
++--------------+  |  | chain: POSTROUTING|
+|table: filter |+-+  +--------+----------+
+|chain: OUTPUT |              |
++--------------+              v
