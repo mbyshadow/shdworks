@@ -16,26 +16,25 @@
 # If not runninig interactively, don't do anything
   [ -z "$PS1" ] && return
 
-#------------------------------------------------------->
-# Source global definitions
-#------------------------------------------------------->
 
-  if [ -f /etc/bashrc ]; then
-        . /etc/bashrc   # --> Read /etc/bashrc, if present.
-  fi
-#	~/.bash_allias
-#	~/.bash_functions
-#	~/.bash_style
+#  Source global definitions
+# ======================================================|
 
-#------------------------------------------------------->
+   if [ -f /etc/bashrc ]; then
+          ./etc/bashrc   # --> Read /etc/bashrc, if present.
+   fi
+# 	  ~/.bash_allias
+#         ~/.bash_functions
+#	  ~/.bash_style
+
+
 # Private alias
-#------------------------------------------------------->
+# ======================================================|
 
-  alias cd..='cd ..'
-  alias ..='cd ..'
+# ls familia
+# ------------------------------------------------------>
+# Colors for filetype and human-readable, default 
 
-#ls--------------------------------------------------->
-# Colors for filetype and human-readable, default on 'l>
   alias ls='ls -h --color'
 
   alias l='ls'              # l  = list, not lazy here
@@ -49,20 +48,31 @@
 #alias lc='ls -ltcr'        # show change time
 #alias lu='ls -ltur'        # access time
 
-#path--------------------------------------------------->
+
+# PATH
+# ------------------------------------------------------>
+
 # Pretty-print PATH variables:
   alias path='echo -e ${PATH//:/\\n}'
   alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+  
 
-#du----------------------------------------------------->
-  alias du='du -kh'
+# du
+# ------------------------------------------------------>
+  alias du='du -kh' #who made du without this
 
-#spelling fix------------------------------------------->
+
+# spelling 
+# ------------------------------------------------------>
+
+  alias cd..='cd ..'
+  alias ..='cd ..'
+ 
   alias l..='ls ..'
 
-#------------------------------------------------------->
+
 # Private functions
-#------------------------------------------------------->
+#=======================================================|
 
 #Processes---------------------------------------------->
 
