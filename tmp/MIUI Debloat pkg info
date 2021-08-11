@@ -1,9 +1,34 @@
+#find $cachepath -iname "*$package*" -delete
+
 # APP_KILL
 #-
 #- google
 #- ------------------------------------------------------------
+#+ package:com.google.android.apps.docs       #- google drive
+#+ package:com.google.android.apps.tachyon #- google duo
 #+ package:com.google.android.apps.photos
-#
+#+ package:com.google.android.apps.maps
+#+ package:com.google.android.videos
+#+ package:com.google.android.tts
+#+ package:com.google.android.music
+#+ package:com.google.android.youtube
+#+ package:com.google.android.gms.location.history
+#-
+#-  ? google app, 10+ reciver..
+#-  package:com.google.android.googlequicksearchbox
+#-
+#-  google assistant listen on us
+#+ package:com.android.hotwordenrollment.xgoogle 
+#+ package:com.android.hotwordenrollment.okgoogle
+#-
+#-
+#- miui
+# - ------------------------------------------------------------
+
+
+#+ package:com.android.egg
+#+ package:com.mi.android.globalFileexplorer
+#- 
 # APP_KILL_STOP
 
 
@@ -75,7 +100,7 @@ package:com.miui.wmsvc
 package:com.miui.freeform
 
 package:com.mi.globallayout
-package:com.mi.android.globalFileexplorer
+
 
 package:miui.systemui.plugin
 
@@ -126,5 +151,11 @@ package:com.android.nfc
 package:com.android.ons
 package:com.android.stk
 package:com.android.backupconfirm
-
+package:com.android.cts.priv.ctsshim
+package:com.android.internal.display.cutout.emulation.corner
+package:com.google.android.ext.services
+package:com.android.internal.display.cutout.emulation.double
+package:com.android.providers.telephony
+package:com.android.dynsystem
+package:com.android.theme.icon.pebble
 
