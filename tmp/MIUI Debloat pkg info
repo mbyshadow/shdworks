@@ -5,7 +5,7 @@
 #- google
 #- ------------------------------------------------------------
 #+ package:com.google.android.apps.docs       #- google drive
-#+ package:com.google.android.apps.tachyon #- google duo
+#+ package:com.google.android.apps.tachyon    #- google duo
 #+ package:com.google.android.apps.photos
 #+ package:com.google.android.apps.maps
 #+ package:com.google.android.videos
@@ -15,7 +15,7 @@
 #+ package:com.google.android.gms.location.history
 #-
 #-  ? google app, 10+ reciver..
-#-  package:com.google.android.googlequicksearchbox
+#- package:com.google.android.googlequicksearchbox
 #-
 #-  google assistant listen on us
 #+ package:com.android.hotwordenrollment.xgoogle 
@@ -23,7 +23,7 @@
 #-
 #-
 #- miui
-# - ------------------------------------------------------------
+#- ------------------------------------------------------------
 
 
 #+ package:com.android.egg
