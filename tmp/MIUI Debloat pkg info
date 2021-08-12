@@ -13,23 +13,53 @@
 #+ package:com.google.android.music
 #+ package:com.google.android.youtube
 #+ package:com.google.android.gms.location.history
-#-
-#-  ? google app, 10+ reciver..
-#- package:com.google.android.googlequicksearchbox
+#+ package:com.google.android.gm              #- gmail
+#+ package:com.google.android.googlequicksearchbox
 #-
 #-  google assistant listen on us
 #+ package:com.android.hotwordenrollment.xgoogle 
 #+ package:com.android.hotwordenrollment.okgoogle
 #-
-#-
+
 #- miui
 #- ------------------------------------------------------------
 
-
+#-
+#-
+#- android
+#- ------------------------------------------------------------
 #+ package:com.android.egg
+#+ package:com.android.chrome
+
+#-
 #+ package:com.mi.android.globalFileexplorer
 #- 
 # APP_KILL_STOP
+
+
+# google 
+package:com.google.android.configupdater
+package:com.google.android.apps.messaging
+package:com.google.android.apps.wellbeing
+package:com.google.android.overlay.modules.permissioncontroller
+package:com.google.android.overlay.modules.ext.services
+package:com.google.android.overlay.gmsconfig.comms
+package:com.google.android.overlay.gmsconfig.common
+package:com.google.android.ext.services
+package:com.google.android.ext.shared
+package:com.google.android.onetimeinitializer
+package:com.google.android.marvin.talkback
+package:com.google.android.permissioncontroller
+package:com.google.android.setupwizard
+package:com.google.android.gms
+package:com.google.android.gsf
+package:com.google.android.ims
+package:com.google.android.dialer
+package:com.google.android.captiveportallogin
+package:com.google.android.inputmethod.latin
+package:com.google.android.apps.restore
+
+package:com.google.ar.core
 
 
 # xiaomi 
@@ -87,7 +117,6 @@ package:com.miui.cloudbackup
 package:com.miui.face.overlay.miui
 package:com.miui.bugreport
 package:com.miui.hybrid
-package:com.mi.android.globalminusscreen
 package:com.miui.calculator
 package:com.miui.cloudservice.sysbase
 package:com.miui.analytics
@@ -99,8 +128,8 @@ package:com.miui.notes
 package:com.miui.wmsvc
 package:com.miui.freeform
 
+package:com.mi.android.globalminusscreen
 package:com.mi.globallayout
-
 
 package:miui.systemui.plugin
 
@@ -135,27 +164,100 @@ package:com.qti.qualcomm.deviceinfo
 package:com.qti.qualcomm.datastatusnotification
 
 # android
-package:com.android.thememanager.module
 package:com.android.thememanager
-package:com.android.internal.systemui.navbar.gestural_narrow_back
-package:com.android.providers.contacts
+package:com.android.thememanager.module
+package:com.android.theme.color.black
+package:com.android.theme.color.green
+package:com.android.theme.color.ocean
+package:com.android.theme.color.space
+package:com.android.theme.color.purple
+package:com.android.theme.color.orchid
+package:com.android.theme.color.cinnamon
+package:com.android.theme.icon.pebble
+package:com.android.theme.icon.vessel
+package:com.android.theme.icon.squircle
+package:com.android.theme.icon.taperedrect
 package:com.android.theme.icon.roundedrect
-package:com.android.cellbroadcastreceiver.overlay.common
-package:com.android.theme.icon_pack.rounded.settings
 package:com.android.theme.icon_pack.circular.androidackage:com.android.traceur
-package:android
-package:android.miui.overlay
+package:com.android.theme.icon_pack.circular.themepicker
+package:com.android.theme.icon_pack.circular.launcher
 package:com.android.theme.icon_pack.rounded.launcher
+package:com.android.theme.icon_pack.rounded.android
+package:com.android.theme.icon_pack.rounded.systemui
+package:com.android.theme.icon_pack.rounded.settings
+package:com.android.theme.icon_pack.filled.launcher
+package:com.android.theme.icon_pack.filled.themepicker
+package:com.android.internal.display.cutout.emulation.corner
+package:com.android.internal.display.cutout.emulation.double
+package:com.android.internal.display.cutout.emulation.hole
+package:com.android.internal.display.cutout.emulation.tall
+package:com.android.internal.systemui.navbar.threebutton
+package:com.android.internal.systemui.navbar.gestural
+package:com.android.internal.systemui.navbar.gestural_narrow_back
+package:com.android.internal.systemui.navbar.gestural_wide_back
+package:com.android.internal.systemui.navbar.gestural_extra_wide_back
 package:com.android.mtp
 package:com.android.nfc
 package:com.android.ons
 package:com.android.stk
 package:com.android.backupconfirm
 package:com.android.cts.priv.ctsshim
-package:com.android.internal.display.cutout.emulation.corner
-package:com.google.android.ext.services
-package:com.android.internal.display.cutout.emulation.double
 package:com.android.providers.telephony
 package:com.android.dynsystem
-package:com.android.theme.icon.pebble
+package:com.android.providers.contacts
+package:com.android.cellbroadcastreceiver.overlay.common
+package:com.android.providers.calendar
+package:com.android.providers.media
+package:com.android.wallpapercropper
+package:com.android.updater
+package:com.android.externalstorage
+package:com.android.htmlviewer
+package:com.android.companiondevicemanager
+package:com.android.providers.downloads
+package:com.android.mms.service
+package:com.android.systemui.icon.overlay
+package:com.android.vending
+package:com.android.pacprocessor
+package:com.android.simappdialog
+package:com.android.settings.overlay.miui
+package:com.android.networkstack.overlay
+package:com.android.certinstaller
+package:com.android.carrierconfig
+package:com.android.provision
+package:com.android.statementservice
+package:com.android.networkstack.tethering.inprocess
+package:com.android.cts.ctsshim
+package:com.android.vpndialogs
+package:com.android.phone
+package:com.android.overlay.gmstelephony
+package:com.android.overlay.gmstelecomm
+package:com.android.shell
+package:com.android.wallpaperbackup
+package:com.android.providers.downloads.ui
+package:com.android.providers.blockednumber
+package:com.android.providers.userdictionary
+package:com.android.providers.media.module
+package:com.android.emergency
+package:com.android.location.fused
+package:com.android.deskclock
+package:com.android.systemui
+package:com.android.wifi.resources.xiaomi
+package:com.android.bluetoothmidiservice
+package:com.android.settings.intelligence
+package:com.android.calendar
+package:com.android.providers.settings
+package:com.android.sharedstoragebackup
+package:com.android.systemui.navigation.bar.overlay
+package:com.android.storagemanager
+package:com.android.settings
+package:com.android.apps.tag
+package:com.android.providers.partnerbookmarks
+package:com.android.smspush
+package:com.android.wallpaper.livepicker
 
+
+package:android
+package:android.miui.overlay
+package:android.qvaoverlay.common
+package:android.overlay.target
+package:android.overlay.common
