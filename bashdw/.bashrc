@@ -3,15 +3,6 @@
 #   confidante
 #   mbyshadow@protonmail.com
 
-#   --Global definitions
-#   --Alias
-#     |-- ls
-#     |-- PATH
-#     |-- du
-#     |-- spelling..
-#   --Functions
-#     |-- Processes
-
 
 # If not runninig interactively, don't do anything
   [ -z "$PS1" ] && return
@@ -33,11 +24,11 @@
 
 # ls familia
 # ------------------------------------------------------>
-# Colors for filetype and human-readable, default 
+# Colors for filetype and human-readable, default
 
   alias ls='ls -h --color'
 
-  alias l='ls'              # l  = list, not lazy here
+  alias l='ls'              # l  = list
   alias ll='ls -l'	    # ll = list long
   alias la='ls -a'
   alias lla='ls -a -l'
@@ -55,19 +46,19 @@
 # Pretty-print PATH variables:
   alias path='echo -e ${PATH//:/\\n}'
   alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-  
+
 
 # du
 # ------------------------------------------------------>
-  alias du='du -kh' #who made du without this
+  alias du='du -kh' #whynot
 
 
-# spelling 
+# spelling
 # ------------------------------------------------------>
 
   alias cd..='cd ..'
   alias ..='cd ..'
- 
+
   alias l..='ls ..'
 
 
