@@ -1,0 +1,43 @@
+
+
+
+configure
+
+set firewall all-ping enable
+set firewall broadcast-ping disable
+set firewall ipv6-receive-redirects disable
+set firewall ipv6-src-route disable
+set firewall ip-src-route disable
+set firewall log-martians enable
+
+set firewall name WAN_IN default-action drop
+set firewall name WAN_IN description 'WAN to internal'
+
+set firewall name WAN_IN rule 10 action accept
+set firewall name WAN_IN rule 10 description 'Allow established/related'
+set firewall name WAN_IN rule 10 state established enable
+set firewall name WAN_IN rule 10 state related enable
+
+set firewall name WAN_IN rule 20 action drop
+set firewall name WAN_IN rule 20 description 'Drop invalid state'
+set firewall name WAN_IN rule 20 state invalid enable
+
+set firewall name WAN_LOCAL default-action drop
+set firewall name WAN_LOCAL description 'WAN to router'
+
+set firewall name WAN_LOCAL rule 10 action accept
+set firewall name WAN_LOCAL rule 10 description 'Allow established/related'
+set firewall name WAN_LOCAL rule 10 state established enable
+set firewall name WAN_LOCAL rule 10 state related enable
+
+set firewall name WAN_LOCAL rule 20 action drop
+set firewall name WAN_LOCAL rule 20 description 'Drop invalid state'
+set firewall name WAN_LOCAL rule 20 state invalid enable
+
+set firewall receive-redirects disable
+set firewall send-redirects enable
+set firewall source-validation disable
+set firewall syn-cookies enable
+
+commit ; save ; exit
+exit
