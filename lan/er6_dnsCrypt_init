@@ -1,0 +1,93 @@
+
+##
+##	DNSCrypt 2.1.0 running on er6 
+##	https://github.com/DNSCrypt/dnscrypt-proxy/
+##
+##	last here, sep 2021
+##
+
+## Need dnsutils 
+## resp  
+configure 
+set system package repository stretch components 'main contrib non-free' 
+set system package repository stretch distribution stretch
+set system package repository stretch url http://http.us.debian.org/debian
+commit ; save; exit
+
+## 
+sudo apt-get update
+sudo apt-cache search dnsutils
+#sudo apt-get install -y dnsutils
+sudo apt-get install dnsutils
+
+##
+## remove. delete. resolv, dns, dnsmasq ... 
+## 
+
+## need 1
+configure
+set system name-server 1.1.1.1
+commit ; save ; exit
+
+
+## download, unpack
+curl -L -o dnscrypt-proxy.tar.gz https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.0/dnscrypt-proxy-linux_mips64-2.1.0.tar.gz
+tar xzf dnscrypt-proxy.tar.gz
+
+
+## edit and use conf. fipe ../dnscrypt-proxy.toml
+cp linux-mips64/example-dnscrypt-proxy.toml linux-mips64/dnscrypt-proxy.toml
+sudo nano linux-mips64/dnscrypt-proxy.toml
+##
+##	bare min edit/notice listen_address.
+##	listen_addresses = ['127.0.0.1:5353']
+
+
+## survive, restart script
+sudo mv linux-mips64 /config/dnscrypt-proxy
+echo '#!/bin/sh' | sudo tee /config/scripts/post-config.d/dnscrypt.sh
+echo '/config/dnscrypt-proxy/dnscrypt-proxy -service install' | sudo tee -a /config/scripts/post-config.d/dnscrypt.sh
+echo '/config/dnscrypt-proxy/dnscrypt-proxy -service start' | sudo tee -a /config/scripts/post-config.d/dnscrypt.sh
+sudo chmod +x /config/scripts/post-config.d/dnscrypt.sh
+
+## start
+sudo /config/scripts/post-config.d/dnscrypt.sh
+
+## list and no err?
+/config/dnscrypt-proxy/dnscrypt-proxy -list
+
+## working and no err?
+/config/dnscrypt-proxy/dnscrypt-proxy -resolve dnscrypt.info
+dig @localhost -p 5353 google.com
+
+
+## use it
+
+configure
+
+set service dns forwarding options 'server=127.0.0.1#5353'
+set service dns forwarding options proxy-dnssec
+
+set interfaces ethernet eth0 dhcp-options name-server no-update
+delete service dns forwarding system 
+set service dns forwarding cache-size 0
+set service dns forwarding options no-resolv
+
+commit ; save ; exit
+
+## cleanup
+sudo rm -R /var/lib/apt/lists
+sudo rm -R /var/cache/apt/archives
+
+configure
+delete system package repository stretch
+commit; save; exit
+
+
+##
+## listen for traffic on 53, expect 0 
+sudo tcpdump -i eth0 dst port 53 or src port 53 -n -x -X -v
+
+## still usefull 
+/config/dnscrypt-proxy/dnscrypt-proxy -resolve ...
+dig @localhost -p 5353 ...
