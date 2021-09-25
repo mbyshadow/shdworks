@@ -1,4 +1,4 @@
-Shadow idk memory bad
+# Shadow idk memory bad
 #   confidante
 #   mbyshadow@protonmail.com
 
@@ -16,6 +16,7 @@ Shadow idk memory bad
 # 	  ~/.bash_allias
 #       ~/.bash_functions
 #	   ~/.bash_style
+
 
 
 #  Color definitions
@@ -162,11 +163,11 @@ extract () {		#extract em
 #  Arch conf.
 #|======================================================|
   
-alias install='sudo pacman -S'
+alias install='sudo pacman -Sv'
 alias remove='sudo pacman -Rv'
-alias purge='sudo pacman -Rscuv'
+alias purge='sudo pacman -Rsuv'
 alias update='sudo pacman -Syy'
-
+alias upgrade='sudo pacman -Suv'
 # netinfo - shows network information for your system
   netinfo () {
     echo "--------------- Network Information ---------------"
