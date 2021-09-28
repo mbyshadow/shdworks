@@ -29,8 +29,8 @@ backtick 1 5 5 "/bin/date" '+%H:%M'
 
 ## First line statusbar pos. etc.
 hardstatus firstline 
-hardstatus off
-hardstatus alwayslastline
+#hardstatus off
+#hardstatus alwayslastline
 
 
 ## Add CPU idle/sustem/user/interrupt stats
@@ -39,8 +39,8 @@ hardstatus alwayslastline
 
 #hardstatus string "%w"
 #hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%?"            #B&W
-hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%? %=%c %d/%m/%Y" #B&W & date&time
-hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%? %=%c %d/%m/%Y" #B&W & date&time
+#hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%? %=%c %d/%m/%Y" #B&W & date&time
+#hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%? %=%c %d/%m/%Y" #B&W & date&time
 #hardstatus string '%{= R}[%{w}%H%{R}][%{w}%=%?%-Lw%?%{R}%n*%f%t%?(%u)%? %{w}%?%+Lw%?%?%=%{R}][%{w}%m/%d %{W}%C%A%{R}]'
 #hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%+w %=%C %a "
 #hardstatus string "%{=b kw} %?%-Lw%?%{=br kw}[%n %t]%{=b kw}%?%+Lw%? %="
