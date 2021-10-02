@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+rm ~/.bashrc && ln -s /home/projects/github/shdworks/dots/.bashrc ~/.bashrc
+
+rm ~/.bash_logout && ln -s /home/projects/github/shdworks/dots/.bash_logout ~/.bash_logout
+rm ~/.bash_profile && ln -s /home/projects/github/shdworks/dots/.bash_profile ~/.bash_profile
+rm ~/.screenrc && ln -s /home/projects/github/shdworks/dots/.screenrc ~/.screenrc
+rm ~/.nanorc && ln -s /home/projects/github/shdworks/dots/.nanorc ~/.nanorc
+

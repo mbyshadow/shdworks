@@ -57,10 +57,10 @@
 #NC="\e[m"               # Color Reset
 
 
-ALERT=${BWhite}${On_Red} # Bold White on red background
+#ALERT=${BWhite}${On_Red} # Bold White on red background
 
-echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
-- DISPLAY on ${BRed}$DISPLAY${NC}\n"
+#echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
+#- DISPLAY on ${BRed}$DISPLAY${NC}\n"
 date
 
 
@@ -162,10 +162,10 @@ extract () {		#extract em
 
 #  Arch conf.
 #|======================================================|
-  
-alias install='sudo pacman -Sv'
-alias remove='sudo pacman -Rv'
-alias purge='sudo pacman -Rsuv'
+
+alias install='sudo pacman -Syu'
+alias remove='sudo pacman -R'
+alias purge='sudo pacman -Rsuvc'
 alias update='sudo pacman -Syy'
 alias upgrade='sudo pacman -Suv'
 # netinfo - shows network information for your system
