@@ -1,14 +1,14 @@
-# Shadow idk memory bad
-#   confidante
-#   mbyshadow@protonmail.com
+## Shadow idk memory bad
+##   confidante
+##   mbyshadow@protonmail.com
 
 
-# If not runninig interactively, don't do anything
+## If not runninig interactively, don't do anything
 [ -z "$PS1" ] && return
 
 
-#  Source global definitions
-#|======================================================|
+##  Source global definitions
+##|======================================================|
 
    if [ -f /etc/bashrc ]; then
           ./etc/bashrc   # --> Read /etc/bashrc, if present.
@@ -19,12 +19,12 @@
 
 
 
-#  Color definitions
-#|======================================================|
-# Stolen @ taken from Color Bash Prompt HowTo).
-# Colors might look different in other terminals
+##  Color definitions
+##|======================================================|
+## Stolen @ taken from Color Bash Prompt HowTo).
+## Colors might look different in other terminals
 
-#Normal Colors
+## Normal Colors
 #Black='\e[0;30m'        # Black
 #Red='\e[0;31m'          # Red
 #Green='\e[0;32m'        # Green
@@ -34,7 +34,7 @@
 #Cyan='\e[0;36m'         # Cyan
 #White='\e[0;37m'        # White
 
-# Bold
+## Bold
 #BBlack='\e[1;30m'       # Black
 #BRed='\e[1;31m'         # Red
 #BGreen='\e[1;32m'       # Green
@@ -44,7 +44,7 @@
 #BCyan='\e[1;36m'        # Cyan
 #BWhite='\e[1;37m'       # White
 
-# Background
+## Background
 #On_Black='\e[40m'       # Black
 #On_Red='\e[41m'         # Red
 #On_Green='\e[42m'       # Green
@@ -64,9 +64,9 @@
 date
 
 
-#  man in color
-#>------------------------------------------------------<
-# will still be diffrent in others
+##  man in color
+##>------------------------------------------------------<
+## will still be diffrent in others
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -76,8 +76,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 
-# Private alias
-#|======================================================|
+## Private alias
+##|======================================================|
 
 alias du='du -kh'
 # we need this..
@@ -85,16 +85,16 @@ alias rm='rm -vi'
 alias cp='cp -vi'
 alias mv='mv -vi'
 
-# space on your in folders (or "drives")
+## space on your in folders (or "drives")
 alias diskspace="du -S | sort -n -r | less"
 
-# ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
+## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
 
-# ls familia
-#>------------------------------------------------------<
+## ls familia
+##>------------------------------------------------------<
 
-# Colors for filetype and human-readable, default
+## Colors for filetype and human-readable, default
 alias ls='ls -h --color'
 
 alias l='ls'
@@ -108,14 +108,14 @@ alias lla='ls -a -l'
 #alias lc='ls -ltcr'        # show change time
 #alias lu='ls -ltur'        # access time
 
-# PATH
-#>------------------------------------------------------<
+## PATH
+##>------------------------------------------------------<
 
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-#  cd
-#>------------------------------------------------------<
+##  cd
+##>------------------------------------------------------<
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -124,19 +124,19 @@ alias .....="cd ../../../.."
 
 alias cd..='cd ..'
 
-#  spelling
-#>------------------------------------------------------<
-# be here mad
+##  spelling
+##>------------------------------------------------------<
+## be here mad
 
 alias l..='ls ..'
 
 
-#  Private functions
-#|======================================================|
+##  Private functions
+##|======================================================|
 
-#  extreact ()
-#>------------------------------------------------------<
-# Stolen for generations
+##  extreact ()
+##>------------------------------------------------------<
+## Stolen for generations
 
 extract () {		#extract em
  if [ -f $1 ] ; then
@@ -160,15 +160,15 @@ extract () {		#extract em
 }
 
 
-#  Arch conf.
-#|======================================================|
+##  Arch conf.
+##|======================================================|
 
 alias install='sudo pacman -Syu'
 alias remove='sudo pacman -R'
 alias purge='sudo pacman -Rsuvc'
 alias update='sudo pacman -Syy'
 alias upgrade='sudo pacman -Suv'
-# netinfo - shows network information for your system
+## netinfo - shows network information for your system
   netinfo () {
     echo "--------------- Network Information ---------------"
     /sbin/ifconfig | awk /'inet addr/ {print $2}'
