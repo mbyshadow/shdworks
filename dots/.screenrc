@@ -2,7 +2,7 @@
 ## this screen thing, not worth it ok
 ## stop fuk the first ones
 ##
-#nononnononononononono
+##nononnononononononono
 xterm*|Eterm|mlterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
 termcapinfo rxvt-unicode ti@:te@     #enable SHIFT-PGUP / SHIFT-PGDOWN scroll
 #termcapinfo wy* CS=\E[?1h:CE=\E[?1l:vi=\E[?25l:ve=\E[?25h:VR=\E[?5h:VN=\E[?5l:cb=\E[1K:CD=\E[1J
@@ -13,7 +13,7 @@ setenv DISPLAY ':0'
 nonblock on
 vbell off
 msgwait 10
-#okok0k9kkokokokoo0kokokokok
+##okok0k9kkokokokoo0kokokokok
 
 ## change scroll bar to xterm
 ## default on 'Ctrl+a [' 
@@ -21,10 +21,10 @@ msgwait 10
 
 
 ## Status bar
-#truecolors on
+truecolors on
 
-backtick 0 5 5 "/bin/date" '+%Y-%m-%d'
-backtick 1 5 5 "/bin/date" '+%H:%M'
+#backtick 0 5 5 "/bin/date" '+%Y-%m-%d'
+#backtick 1 5 5 "/bin/date" '+%H:%M'
 
 
 ## First line statusbar pos. etc.
@@ -34,8 +34,8 @@ hardstatus firstline
 
 
 ## Add CPU idle/sustem/user/interrupt stats
-#backtick 100 5 5 tail -1 /var/tmp/vermaden-stats-top
-#caption always '%{= wk} %= %100` %='
+backtick 100 5 5 tail -1 /var/tmp/vermaden-stats-top
+caption always '%{= wk} %= %100` %='
 
 #hardstatus string "%w"
 #hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%?"            #B&W
@@ -46,7 +46,7 @@ hardstatus firstline
 #hardstatus string "%{=b kw} %?%-Lw%?%{=br kw}[%n %t]%{=b kw}%?%+Lw%? %="
 #hardstatus alwayslastline '%{bk}[ %{W}%H %{b}][ %{w}%l%{b} ]   %{b}[%{w} %D %d.%m %c:%s%{b} ]'
 #hardstatus alwayslastline '%{bk}[%{W}%H%{b}] %{w} %l %= %n*%t%{-b r}%{w}%+w %= %{w}%d %D %{w}%c'
-#hardstatus alwayslastline '%{wk}[ %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+hardstatus alwayslastline '%{wk}[ %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
 #hardstatus alwayslastline '%{#00ff00}[ %H ][%{#ffffff}%= %{7}%?%-Lw%?%{1;0}%{1}(%{15}%n%f%t%?(%u)%?%{1;0}%{1})%{7}%?%+Lw%?%? %=%{#00ff00}][ %{#00a5ff}%{6}%0` %{#ffffff}%{7}%1`%{#00ff00} ]'
 
 
@@ -54,10 +54,10 @@ hardstatus firstline
 #sorendition kw
 
 ## Remove vertical bars
-# rendition so =00
+rendition so =00
 
 ## Hide horizontal bar
-# caption string "%{03} "
+caption string "%{03} "
 ## Alt. no use rly,'
 ##caption string "%{00}%3n %t"
 
