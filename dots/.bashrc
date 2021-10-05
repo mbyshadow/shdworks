@@ -1,11 +1,8 @@
+[ -z "$PS1" ] && return
+
 ## Shadow idk memory bad
 ##   confidante
 ##   mbyshadow@protonmail.com
-
-
-## If not runninig interactively, don't do anything
-[ -z "$PS1" ] && return
-
 
 ##  Source global definitions
 ##|======================================================|
@@ -45,6 +42,7 @@
 #BWhite='\e[1;37m'       # White
 
 ## Background
+
 #On_Black='\e[40m'       # Black
 #On_Red='\e[41m'         # Red
 #On_Green='\e[42m'       # Green
@@ -83,6 +81,7 @@ alias du='du -kh'
 # we need this..
 alias rm='rm -vi'
 alias cp='cp -vi'
+alias ln='ln -vi'
 alias mv='mv -vi'
 
 ## space on your in folders (or "drives")
@@ -94,13 +93,21 @@ export LESS="-iMFXR"
 ## ls familia
 ##>------------------------------------------------------<
 
-## Colors for filetype and human-readable, default
-alias ls='ls -h --color'
-
-alias l='ls'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -a -l'
+## Colors and human-readable
+## try exa
+if [ -n "$(command -v exa)" ]; then
+	alias l='exa'
+	alias ls='exa'
+	alias ll='exa -hl'
+	alias la='exa -ha'
+	alias lla='exa -hla'
+else
+	alias l='ls -h --color=auto'
+	alias ls='ls -h --color=auto'
+	alias ll='ls -lh  --color=auto'
+	alias la='ls -ah --color=auto'
+	alias lla='ls -lah --color=auto'
+fi
 
 #alias lx='ls -lXB'         # sort by extension.
 #alias lk='ls -lSr'         # size, biggest lasta
