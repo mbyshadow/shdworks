@@ -74,11 +74,19 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 
+## Colored output
+##>------------------------------------------------------<
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto -h'
+
+
 ## Private alias
 ##|======================================================|
-
 alias du='du -kh'
-# we need this..
+## we need this..
 alias rm='rm -vi'
 alias cp='cp -vi'
 alias ln='ln -vi'
@@ -90,7 +98,7 @@ alias diskspace="du -S | sort -n -r | less"
 ## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
 
-## ls familia
+## Private alias, ls familia
 ##>------------------------------------------------------<
 
 ## Colors and human-readable
@@ -115,27 +123,26 @@ fi
 #alias lc='ls -ltcr'        # show change time
 #alias lu='ls -ltur'        # access time
 
-## PATH
+## Private alias, path
 ##>------------------------------------------------------<
-
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-##  cd
-##>------------------------------------------------------<
 
+## Private alias, cd
+##>------------------------------------------------------<
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-alias cd..='cd ..'
 
-##  spelling
+## Private alias,  spelling
 ##>------------------------------------------------------<
 ## be here mad
 
 alias l..='ls ..'
+alias cd..='cd ..'
 
 
 ##  Private functions
