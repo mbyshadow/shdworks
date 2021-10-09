@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+rm ~/.bashrc && ln -s /storage/emulated/0/home/projects/public/github/shdworks/dots/.bashrc_droid ~/.bashrc
+
+rm ~/.bash_logout && ln -s /storage/emulated/0/home/projects/public/github/shdworks/dots.bash_logout ~/.bash_logout
+rm ~/.bash_profile && ln -s /storage/emulated/0/home/projects/public/github/shdworks/dots/.bash_profile ~/.bash_profile
+rm ~/.screenrc && ln -s /storage/emulated/0/home/projects/public/github/shdworks/dots/dots/.screenrc ~/.screenrc
+rm ~/.nanorc && ln -s /storage/emulated/0/home/projects/public/github/shdworks/dots/.nanorc ~/.nanorc
+
