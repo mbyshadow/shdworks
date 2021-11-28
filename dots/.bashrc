@@ -21,6 +21,19 @@ fi
 #~/.bash_style
 
 
+##	bash_history 
+##======================================================
+
+## don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+##append to the history file, don't overwrite it
+shopt -s histappend
+
+## history length
+HISTSIZE=1000
+HISTFILESIZE=2000
+
 
 ##  Color definitions
 ##======================================================
@@ -66,9 +79,11 @@ fi
 #date
 
 
+## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
+export LESS="-iMFXR"
+
 ##  man in color
-##>------------------------------------------------------<
-## will still be diffrent in others
+##------------------------------------------------------
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -78,17 +93,9 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 
-## Colored output
-##>------------------------------------------------------<
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto -h'
-
-
 ## Private alias
-##|======================================================|
+##======================================================
+
 alias du='du -kh'
 ## we need this..
 alias rm='rm -vi'
@@ -96,16 +103,14 @@ alias cp='cp -vi'
 alias ln='ln -vi'
 alias mv='mv -vi'
 
-## space on your in folders (or "drives")
-alias diskspace="du -S | sort -n -r | less"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
-## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
-export LESS="-iMFXR"
 
-## Private alias, ls familia
-##>------------------------------------------------------<
-
-## Colors and human-readable
+## colored output
+##-----------------------------------------------------
 ## try exa
 if [ -n "$(command -v exa)" ]; then
 	alias l='exa'
@@ -121,30 +126,21 @@ else
 	alias lla='ls -lah --color=auto'
 fi
 
-#alias lx='ls -lXB'         # sort by extension.
-#alias lk='ls -lSr'         # size, biggest lasta
-#alias lt='ls -ltr'         # date, most recent
-#alias lc='ls -ltcr'        # show change time
-#alias lu='ls -ltur'        # access time
 
-## Private alias, path
-##>------------------------------------------------------<
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto -h'
+
+## 
+##------------------------------------------------------
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 
-## Private alias, cd
-##>------------------------------------------------------<
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
-
-## Private alias,  spelling
-##>------------------------------------------------------<
-## be here mad
-
+## spelling..
+##------------------------------------------------------
 alias l..='ls ..'
 alias cd..='cd ..'
 
@@ -152,9 +148,8 @@ alias cd..='cd ..'
 ##  Private functions
 ##======================================================
 
-##  extreact ()
+## extreact 
 ##------------------------------------------------------
-## Stolen for generations
 
 extract () {
  if [ -f $1 ] ; then
