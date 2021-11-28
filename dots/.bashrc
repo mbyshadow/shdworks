@@ -1,25 +1,29 @@
-[ -z "$PS1" ] && return
 
 ## Shadow idk memory bad
 ##   confidante
 ##   mbyshadow@protonmail.com
 
-##  Source global definitions
-##|======================================================|
 
-   if [ -f /etc/bashrc ]; then
-          ./etc/bashrc   # --> Read /etc/bashrc, if present.
-   fi
-# 	  ~/.bash_allias
-#       ~/.bash_functions
-#	   ~/.bash_style
+## If not running interactively, don't do anything..
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+##  Source global definitions
+##======================================================
+
+if [ -f /etc/bashrc ]; then
+  ./etc/bashrc   # --> Read /etc/bashrc, if present.
+fi
+#~/.bash_allias
+#~/.bash_functions
+#~/.bash_style
 
 
 
 ##  Color definitions
-##|======================================================|
-## Stolen @ taken from Color Bash Prompt HowTo).
-## Colors might look different in other terminals
+##======================================================
 
 ## Normal Colors
 #Black='\e[0;30m'        # Black
@@ -59,7 +63,7 @@
 
 #echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
 #- DISPLAY on ${BRed}$DISPLAY${NC}\n"
-date
+#date
 
 
 ##  man in color
@@ -146,13 +150,13 @@ alias cd..='cd ..'
 
 
 ##  Private functions
-##|======================================================|
+##======================================================
 
 ##  extreact ()
-##>------------------------------------------------------<
+##------------------------------------------------------
 ## Stolen for generations
 
-extract () {		#extract em
+extract () {
  if [ -f $1 ] ; then
    case $1 in
        *.tar.bz2)   tar xvjf $1    ;;
@@ -174,8 +178,8 @@ extract () {		#extract em
 }
 
 
-##  Arch conf.
-##|======================================================|
+##
+##======================================================
 
 alias install='sudo pacman -Syu'
 alias remove='sudo pacman -R'
@@ -193,3 +197,15 @@ alias upgrade='sudo pacman -Suv'
     echo "${myip}"
     echo "---------------------------------------------------"
 }
+
+
+
+## enable programmable completion features.
+## should already be enabled somewhere, /etc/bash.bashrc, /etc/profile, /etc/bash.bashrc.
+#if ! shopt -oq posix; then
+#  if [ -f /usr/share/bash-completion/bash_completion ]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
