@@ -35,55 +35,23 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 
-##  Color definitions
+##  
 ##======================================================
 
-## Normal Colors
-#Black='\e[0;30m'        # Black
-#Red='\e[0;31m'          # Red
-#Green='\e[0;32m'        # Green
-#Yellow='\e[0;33m'       # Yellow
-#Blue='\e[0;34m'         # Blue
-#Purple='\e[0;35m'       # Purple
-#Cyan='\e[0;36m'         # Cyan
-#White='\e[0;37m'        # White
+[[ $(declare -p PS1 2>/dev/null | cut -c 1-11) = 'declare -x ' ]] || \
+	export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[35m\]BASH\[\e[0m\] \[\e[33m\]\w\[\e[0m\]\n'"$"' '
 
-## Bold
-#BBlack='\e[1;30m'       # Black
-#BRed='\e[1;31m'         # Red
-#BGreen='\e[1;32m'       # Green
-#BYellow='\e[1;33m'      # Yellow
-#BBlue='\e[1;34m'        # Blue
-#BPurple='\e[1;35m'      # Purple
-#BCyan='\e[1;36m'        # Cyan
-#BWhite='\e[1;37m'       # White
-
-## Background
-
-#On_Black='\e[40m'       # Black
-#On_Red='\e[41m'         # Red
-#On_Green='\e[42m'       # Green
-#On_Yellow='\e[43m'      # Yellow
-#On_Blue='\e[44m'        # Blue
-#On_Purple='\e[45m'      # Purple
-#On_Cyan='\e[46m'        # Cyan
-#On_White='\e[47m'       # White
-
-#NC="\e[m"               # Color Reset
+date
+echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
 
 
-#ALERT=${BWhite}${On_Red} # Bold White on red background
-
-#echo -e "${BCyan}This is BASH ${BRed}${BASH_VERSION%.*}${BCyan}\
-#- DISPLAY on ${BRed}$DISPLAY${NC}\n"
-#date
-
+##  Color 
+##======================================================
 
 ## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
 
 ##  man in color
-##------------------------------------------------------
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -95,8 +63,8 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 ## Private alias
 ##======================================================
-
 alias du='du -kh'
+
 ## we need this..
 alias rm='rm -vi'
 alias cp='cp -vi'
@@ -108,9 +76,16 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias path='echo -e ${PATH//:/\\n}'
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+
+## spelling..
+alias l..='ls ..'
+alias cd..='cd ..'
 
 ## colored output
 ##-----------------------------------------------------
+
 ## try exa
 if [ -n "$(command -v exa)" ]; then
 	alias l='exa'
@@ -126,31 +101,17 @@ else
 	alias lla='ls -lah --color=auto'
 fi
 
-
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto -h'
 
-## 
-##------------------------------------------------------
-alias path='echo -e ${PATH//:/\\n}'
-alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-
-
-## spelling..
-##------------------------------------------------------
-alias l..='ls ..'
-alias cd..='cd ..'
-
 
 ##  Private functions
 ##======================================================
 
-## extreact 
-##------------------------------------------------------
-
+## extract 
 extract () {
  if [ -f $1 ] ; then
    case $1 in
