@@ -1,4 +1,25 @@
 ## .nanorc
+
+
+## Display line numbers, anchors).
+set linenumbers
+
+## Spread overlong lines over multiple screen lines.
+set softwrap
+
+## Use this tab size instead of the default.
+set tabsize 2
+
+## Enable mouse support, if available for your system.  When enabled,
+## mouse clicks can be used to place the cursor, set the mark (with a
+## double click), and execute shortcuts.  The mouse will work in the X
+## Window System, and on the console when gpm is running.
+set mouse
+
+## === Syntax coloring ===
+##  mby include 
+include "/usr/share/nano/*.nanorc"
+
 ## === Key bindings ===
 bind ^Q exit all
 bind ^S savefile main
@@ -98,14 +119,6 @@ bind ^Y redo main
 ## Scroll the buffer contents per half-screen instead of per line.
 # set jumpyscrolling
 
-## Display line numbers to the left (and any anchors in the margin).
-set linenumbers
-
-## Enable vim-style lock-files.  This is just to let a vim user know you
-## are editing a file [s]he is trying to edit and vice versa.  There are
-## no plans to implement vim-style undo state in these files.
-# set locking
-
 ## Fall back to slow libmagic to try and determine an applicable syntax.
 # set magic
 
@@ -116,12 +129,6 @@ set linenumbers
 
 ## Suppress title bar and show file name and editor state at the bottom.
 # set minibar
-
-## Enable mouse support, if available for your system.  When enabled,
-## mouse clicks can be used to place the cursor, set the mark (with a
-## double click), and execute shortcuts.  The mouse will work in the X
-## Window System, and on the console when gpm is running.
-# set mouse
 
 ## Switch on multiple file buffers (inserting a file will put it into
 ## a separate buffer).
@@ -186,9 +193,6 @@ set linenumbers
 ## beginning of the line.
 # set smarthome
 
-## Spread overlong lines over multiple screen lines.
-set softwrap
-
 ## Use this spelling checker instead of the internal one.  This option
 ## does not have a default value.
 # set speller "aspell -x -c"
@@ -199,10 +203,6 @@ set softwrap
 
 ## Allow nano to be suspended (with ^Z by default).
 # set suspendable
-## (The old form of this option, 'set suspend', is deprecated.)
-
-## Use this tab size instead of the default; it must be greater than 0.
-set tabsize 2
 
 ## Convert typed tabs to spaces.
 # set tabstospaces
@@ -231,38 +231,7 @@ set tabsize 2
 ## of a single character, and without affecting the cutbuffer).
 # set zap
 
-
-## Paint the interface elements of nano.  These are examples; there are
-## no colors by default, except for errorcolor and spotlightcolor.
-# set titlecolor bold,lightwhite,blue
-# set promptcolor lightwhite,lightblack
-# set statuscolor bold,lightwhite,green
-# set errorcolor bold,lightwhite,red
-# set spotlightcolor black,lime
-# set selectedcolor lightwhite,magenta
-# set stripecolor ,yellow
-# set scrollercolor cyan
-# set numbercolor cyan
-# set keycolor cyan
-# set functioncolor green
-
-## In root's .nanorc you might want to use:
-# set titlecolor bold,lightwhite,magenta
-# set promptcolor black,yellow
-# set statuscolor bold,lightwhite,magenta
-# set errorcolor bold,lightwhite,red
-# set spotlightcolor black,orange
-# set selectedcolor lightwhite,cyan
-# set stripecolor ,yellow
-# set scrollercolor magenta
-# set numbercolor magenta
-# set keycolor lightmagenta
-# set functioncolor magenta
-
-
 ## === Syntax coloring ===
-## To include most syntax definitionso:
-include "/usr/share/nano/*.nanorc"
 
 ## If <Tab> should always produce four spaces when editing a Python file,
 ## independent of the settings of 'tabsize' and 'tabstospaces':
@@ -273,7 +242,6 @@ include "/usr/share/nano/*.nanorc"
 
 ## === Key bindings ===
 ## For all details, see 'man nanorc', section REBINDING KEYS.
-
 ## The <Ctrl+Delete> keystroke deletes the word to the right of the cursor.
 ## On some terminals the <Ctrl+Backspace> keystroke produces ^H, which is
 ## the ASCII character for backspace, so it is bound by default to the
@@ -282,7 +250,6 @@ include "/usr/share/nano/*.nanorc"
 ## normally use <Backspace> for backspacing and not ^H, you can make
 ## <Ctrl+Backspace> delete the word to the left of the cursor with:
 # bind ^H chopwordleft main
-
 ## For quickly uppercasing or lowercasing the word under the cursor.
 ## (These effectively do a Ctrl+Right followed by a Shift+Ctrl+Left,
 ## and then pipe the selected text through a sed command.)
