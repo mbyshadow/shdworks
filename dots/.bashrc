@@ -21,6 +21,10 @@ fi
 #~/.bash_style
 
 
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 ##	bash_history 
 ##======================================================
 
@@ -47,6 +51,10 @@ echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
 
 ##  Color 
 ##======================================================
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
 
 ## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
@@ -60,6 +68,8 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 ## Private alias
 ##======================================================
