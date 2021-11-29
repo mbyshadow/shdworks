@@ -6,8 +6,10 @@
 
 ## If not running interactively, don't do anything..
 case $- in
-    *i*) ;;
-      *) return;;
+    *i*)
+	;;
+ 	*) return
+;;
 esac
 
 ##  Source global definitions
@@ -25,7 +27,7 @@ fi
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-##	bash_history 
+##	bash_history
 ##======================================================
 
 ## don't put duplicate lines or lines starting with space in the history.
@@ -39,7 +41,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 
-##  
+##
 ##======================================================
 
 [[ $(declare -p PS1 2>/dev/null | cut -c 1-11) = 'declare -x ' ]] || \
@@ -49,7 +51,7 @@ date
 echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
 
 
-##  Color 
+##  Color
 ##======================================================
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -147,11 +149,11 @@ extract () {
 ##
 ##======================================================
 
-alias install='sudo pacman -Syu'
-alias remove='sudo pacman -R'
-alias purge='sudo pacman -Rsuvc'
-alias update='sudo pacman -Syy'
-alias upgrade='sudo pacman -Suv'
+#alias install='sudo pacman -Syu'
+#alias remove='sudo pacman -R'
+#alias purge='sudo pacman -Rsuvc'
+#alias update='sudo pacman -Syy'
+#alias upgrade='sudo pacman -Suv'
 ## netinfo - shows network information for your system
   netinfo () {
     echo "--------------- Network Information ---------------"
