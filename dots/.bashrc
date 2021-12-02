@@ -53,7 +53,7 @@ echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
 
 ##  Color
 ##======================================================
-# enable color support of ls and also add handy aliases
+# enable color support 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
@@ -147,7 +147,6 @@ extract () {
  fi
 }
 
-
 ##
 ##======================================================
 
@@ -156,18 +155,18 @@ extract () {
 #alias purge='sudo pacman -Rsuvc'
 #alias update='sudo pacman -Syy'
 #alias upgrade='sudo pacman -Suv'
-## netinfo - shows network information for your system
-  netinfo () {
-    echo "--------------- Network Information ---------------"
-    /sbin/ifconfig | awk /'inet addr/ {print $2}'
-    /sbin/ifconfig | awk /'Bcast/ {print $3}'
-    /sbin/ifconfig | awk /'inet addr/ {print $4}'
-    /sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
-    myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
-    echo "${myip}"
-    echo "---------------------------------------------------"
-}
 
+## netinfo - shows network information for your system
+netinfo () {
+  echo "--------------- Network Information ---------------"
+  /sbin/ifconfig eth0 | grep 'inet' | cut -d: -f2 | awk '{print $2}'
+  /sbin/ifconfig eth0 | grep 'broadcast' | awk '{print $4}'
+  /sbin/ifconfig | awk /'inet addr/ {print $4}'
+  /sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
+  myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
+  echo "${myip}"
+  echo "---------------------------------------------------"
+}
 
 
 ## enable programmable completion features.
