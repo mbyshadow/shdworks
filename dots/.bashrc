@@ -119,6 +119,8 @@ alias fgrep='fgrep --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto -h'
 
+update='apt update && apt list --upgradable'
+
 
 ##  Private functions
 ##======================================================
