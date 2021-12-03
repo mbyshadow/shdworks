@@ -119,8 +119,10 @@ alias fgrep='fgrep --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto -h'
 
-update='sudo apt update && apt list --upgradable'
-upgrade='sudo apt update'
+
+alias apt='sudo apt'
+alias update='sudo apt update && apt list --upgradable'
+alias upgrade='sudo apt upgrade'
 
 ##  Private functions
 ##======================================================
