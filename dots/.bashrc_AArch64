@@ -1,3 +1,17 @@
+# Handle commands not found
+#if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
+#	command_not_found_handle() {
+#		/data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
+#	}
+#fi
+# Autocompletion
+#
+# cycle through all matches with 'TAB' key
+#bind 'TAB:menu-complete'
+
+
+
+
 
 ## Shadow idk memory bad
 ##   confidante
@@ -50,26 +64,28 @@ date
 echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
 
 
-shopt -s autocd     # cd when entering just a path in the shell
+# Color definitions
+export red="$(tput setaf 1)"
+export green="$(tput setaf 2)"
+export yellow="$(tput setaf 3)"
+export blue="$(tput setaf 4)"
+export magenta="$(tput setaf 5)"
+export cyan="$(tput setaf 6)"
+export white="$(tput setaf 7)"
+export b="$(tput bold)"
+export reset="$(tput sgr0)"
 
-##  Color
-##======================================================
-# enable color support of ls, grep, ip.
-if [[ -x /usr/bin/dircolors ]]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  
-	alias ls='ls --color=auto'
-    alias ip='ip --color=auto'
-	alias grep='grep --color=auto'
-	alias egrep='egrep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto -h'
+# set color for current user
+if [[ "$UID" -eq 0 ]]; then
+    usercolor="${red}"
+else
+    usercolor="${green}"
 fi
 
 
+##======================================================
 
-## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
+# ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
 export LESS="-iMFXR"
 
 ##make less more friendly for non-text input files, see lesspipe(1)
@@ -162,15 +178,6 @@ extract () {
    echo "'$1' is not a valid file!"
  fi
 }
-
-##
-##======================================================
-
-#alias install='sudo pacman -Syu'
-#alias remove='sudo pacman -R'
-#alias purge='sudo pacman -Rsuvc'
-#alias update='sudo pacman -Syy'
-#alias upgrade='sudo pacman -Suv'
 
 ## netinfo - shows network information for your system
 netinfo () {
