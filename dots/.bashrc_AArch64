@@ -149,10 +149,8 @@ fi
 
 alias mkdir='mkdir -p -v'
 
-
-alias apt='sudo apt'
-alias update='sudo apt update && apt list --upgradable'
-alias upgrade='sudo apt upgrade'
+alias update='apt update && apt list --upgradable'
+alias upgrade='apt upgrade'
 
 ##  Private functions
 ##======================================================
