@@ -1,31 +1,26 @@
-
 ## Shadow idk memory bad
 ##   confidante
 ##   mbyshadow@protonmail.com
 
-
-## If not running interactively, don't do anything..
-case $- in
-    *i*)
-	;;
- 	*) return
-;;
-esac
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
 ##  Source global definitions
 ##======================================================
 
-if [ -f /etc/bashrc ]; then
-  ./etc/bashrc   # --> Read /etc/bashrc, if present.
-fi
+#if [ -f /etc/bashrc ]; then
+#  ./etc/bashrc   # --> Read /etc/bashrc, if present.
+#fi
 #~/.bash_allias
 #~/.bash_functions
 #~/.bash_style
 
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+## check the window size after each command and, if necessary,
+## update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+## cd when entering just a path in the shell
+shopt -s autocd
 
 ##	bash_history
 ##======================================================
@@ -44,36 +39,29 @@ HISTFILESIZE=2000
 ##======================================================
 
 [[ $(declare -p PS1 2>/dev/null | cut -c 1-11) = 'declare -x ' ]] || \
-	export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[35m\]BASH\[\e[0m\] \[\e[33m\]\w\[\e[0m\]\n'"$"' '
+  export PS1='\[\e]0;\w\a\]\n\[\e[33m\][\h] \[\033[00m\]\w\n\[\033[01;34m\]\$\[\033[00m\]: '
 
-date
-echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
-
-
-shopt -s autocd     # cd when entering just a path in the shell
 
 ##  Color
 ##======================================================
 # enable color support of ls, grep, ip.
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  
-	alias ls='ls --color=auto'
+    alias ls='ls --color=auto'
     alias ip='ip --color=auto'
-	alias grep='grep --color=auto'
-	alias egrep='egrep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto -h'
+    alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto -h'
 fi
 
 
-
 ## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
-export LESS="-iMFXR"
+#export LESS="-iMFXR"
 
 ##make less more friendly for non-text input files, see lesspipe(1)
-[ -x usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 ##  man in color
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -87,9 +75,25 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 ## Private alias
 ##======================================================
+
+## try exa
+if [ -n "$(command -v exa)" ]; then
+        alias l='exa'
+        alias ls='exa'
+        alias ll='exa -hl'
+        alias la='exa -ha'
+        alias lla='exa -hla'
+else
+        alias l='ls -h --color=auto'
+        alias ls='ls -h --color=auto'
+        alias ll='ls -lh  --color=auto'
+        alias la='ls -ah --color=auto'
+        alias lla='ls -lah --color=auto'
+fi
+
 alias du='du -kh'
 
-## we need this..
+# we need this..
 alias rm='rm -vi'
 alias cp='cp -vi'
 alias ln='ln -vi'
@@ -110,38 +114,21 @@ alias cd..='cd ..'
 
 ##-----------------------------------------------------
 
-## try exa
-if [ -n "$(command -v exa)" ]; then
-	alias l='exa'
-	alias ls='exa'
-	alias ll='exa -hl'
-	alias la='exa -ha'
-	alias lla='exa -hla'
-else
-	alias l='ls -h'
-	alias ls='ls'
-	alias ll='ls -lh'
-	alias la='ls -ah'
-	alias lla='ls -lah'
-fi
-
-#alias grep='grep --color=auto'
-#alias egrep='egrep --color=auto'
-#alias fgrep='fgrep --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto -h'
+#alias l='ls -h'
+#alias ll='ls -lh'
+#alias la='ls -ah'
+#alias lla='ls -lah'
 
 alias mkdir='mkdir -p -v'
 
-
 alias apt='sudo apt'
-alias update='sudo apt update && apt list --upgradable'
-alias upgrade='sudo apt upgrade'
+alias update='apt update && apt list --upgradable'
+alias upgrade='apt upgrade'
 
 ##  Private functions
 ##======================================================
 
-## extract 
+## extract
 extract () {
  if [ -f $1 ] ; then
    case $1 in
@@ -159,30 +146,24 @@ extract () {
        *)           echo "don't know how to extract '$1'..." ;;
     esac
  else
-   echo "'$1' is not a valid file!"
+  echo "'$1' is not a valid file!"
  fi
-}
+ }
 
-##
 ##======================================================
 
-#alias install='sudo pacman -Syu'
-#alias remove='sudo pacman -R'
-#alias purge='sudo pacman -Rsuvc'
-#alias update='sudo pacman -Syy'
-#alias upgrade='sudo pacman -Suv'
 
 ## netinfo - shows network information for your system
-netinfo () {
-  echo "--------------- Network Information ---------------"
-  /sbin/ifconfig eth0 | grep 'inet' | cut -d: -f2 | awk '{print $2}'
-  /sbin/ifconfig eth0 | grep 'broadcast' | awk '{print $4}'
-  /sbin/ifconfig | awk /'inet addr/ {print $4}'
-  /sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
-  myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
-  echo "${myip}"
-  echo "---------------------------------------------------"
-}
+#netinfo () {
+#  echo "--------------- Network Information ---------------"
+#  /sbin/ifconfig eth0 | grep 'inet' | cut -d: -f2 | awk '{print $2}'
+#  /sbin/ifconfig eth0 | grep 'broadcast' | awk '{print $4}'
+#  /sbin/ifconfig | awk /'inet addr/ {print $4}'
+#  /sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
+#  myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
+#  echo "${myip}"
+#  echo "---------------------------------------------------"
+#}
 
 
 ## enable programmable completion features.
