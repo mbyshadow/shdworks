@@ -44,7 +44,8 @@ HISTFILESIZE=2000
 ##======================================================
 
 [[ $(declare -p PS1 2>/dev/null | cut -c 1-11) = 'declare -x ' ]] || \
-  export PS1='\[\e]0;\w\a\]\n\[\e[33m\][\h] \[\033[00m\]\w\n\[\033[01;34m\]\$\[\033[00m\]: '
+  export PS1='\[\e]0;\w\a\]\n\[\033[38;5;12m\]#\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;6m\]\u\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;8m\]@\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;2m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;8m\]in\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;11m\]\W\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;8m\][\A]\[$(tput sgr0)\]\n\[$(tput sgr0)\]\[\033[38;5;1m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;11m\]'
+
 
 
 ##  Color

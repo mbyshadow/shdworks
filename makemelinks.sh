@@ -1,18 +1,21 @@
 # exit if running as root
-if [[ $(/usr/bin/id -u) -eq 0 ]]; then
+if [ $(/usr/bin/id -u) -eq 0 ]; then
     echo "you root script"
     exit
 fi
 
 # rm ln bash config files
 rm ~/.bash_aliases
-ln -s ./config/bash/.bash_aliases ~/.bash_aliases
+ln -s -v shdworks/config/bash/.bash_aliases ~/.bash_aliases
 
 rm  ~/.bash_functions
-ln -s ./config/bash/.bash_functions ~/.bash_functions
+ln -s shdworks/config/bash/.bash_functions ~/.bash_functions
 
 rm ~/.bash_styles
-ln -s ./config/bash/.bash_styles ~/.bash_styles
+ln -s shdworks/config/bash/.bash_styles ~/.bash_styles
+
+rm ~/.bashrc
+ln -s shdworks/config/bash/.bashrc ~/.bashrc
 
 #rm ~/.bash_profile
 #ln -s ./config/bash/.bash_profile ~/.bash_profile
@@ -24,14 +27,14 @@ ln -s ./config/bash/.bash_styles ~/.bash_styles
 
 # ln git config files
 rm ~/.gitconfig
-ln -s ./config/.gitconfig ~/.gitconfig
+ln -s shdworks/config/.gitconfig ~/.gitconfig
 
 # ln nano config files
 rm ~/.nanorc
-ln -s ./config/.nanorc ~/.nanorc
+ln -s shdworks/config/.nanorc ~/.nanorc
 
 # ln dircolors config files
 rm ~/.dircolors
-ln -s ./config/.dircolors ~/.dircolors
+ln -s shdworks/config/.dircolors ~/.dircolors
 
 
