@@ -1,0 +1,11 @@
+##
+## this is the way
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+if [ -f ~/.bash_styles ]; then
+    . ~/.bash_styles
+fi
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi

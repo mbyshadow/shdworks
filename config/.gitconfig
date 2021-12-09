@@ -1,0 +1,14 @@
+[user]
+    name = mbyshadow
+    email = mbyshadow@protonmail.com
+
+[color]
+    ui = true
+
+[core]
+    editor = nano
+
+[alias]
+    which = !git branch | grep -i
+
+   
