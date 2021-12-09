@@ -1,45 +1,31 @@
-# Handle commands not found
-#if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
-#	command_not_found_handle() {
-#		/data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
-#	}
-#fi
-# Autocompletion
-#
-# cycle through all matches with 'TAB' key
-#bind 'TAB:menu-complete'
-
-
-
-
-
 ## Shadow idk memory bad
 ##   confidante
 ##   mbyshadow@protonmail.com
 
-
-## If not running interactively, don't do anything..
-case $- in
-    *i*)
-	;;
- 	*) return
-;;
-esac
+[ -z "$PS1" ] && return
 
 ##  Source global definitions
 ##======================================================
-
-if [ -f /etc/bashrc ]; then
-  ./etc/bashrc   # --> Read /etc/bashrc, if present.
+if [ -f /etc/bash.bashrc ]; then
+    . /etc/bash.bashrc
 fi
-#~/.bash_allias
-#~/.bash_functions
-#~/.bash_style
+
+## this is the way
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+if [ -f ~/.bash_styles ]; then
+    . ~/.bash_styles
+fi
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+## check the window size after each command and, if necessary,## update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+## cd when entering just a path in the shell
+shopt -s autocd
 
 ##	bash_history
 ##======================================================
@@ -58,38 +44,29 @@ HISTFILESIZE=2000
 ##======================================================
 
 [[ $(declare -p PS1 2>/dev/null | cut -c 1-11) = 'declare -x ' ]] || \
-	export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[35m\]BASH\[\e[0m\] \[\e[33m\]\w\[\e[0m\]\n'"$"' '
-
-date
-echo -e "This is BASH ${BASH_VERSION%.*} on DISPLAY$DISPLAY"
+  export PS1='\[\e]0;\w\a\]\n\[\e[33m\][\h] \[\033[00m\]\w\n\[\033[01;34m\]\$\[\033[00m\]: '
 
 
-# Color definitions
-export red="$(tput setaf 1)"
-export green="$(tput setaf 2)"
-export yellow="$(tput setaf 3)"
-export blue="$(tput setaf 4)"
-export magenta="$(tput setaf 5)"
-export cyan="$(tput setaf 6)"
-export white="$(tput setaf 7)"
-export b="$(tput bold)"
-export reset="$(tput sgr0)"
-
-# set color for current user
-if [[ "$UID" -eq 0 ]]; then
-    usercolor="${red}"
-else
-    usercolor="${green}"
+##  Color
+##======================================================
+# enable color support of ls, grep, ip.
+if [[ -x /usr/bin/dircolors ]]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias ip='ip --color=auto'
+    alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto -h'
 fi
 
 
-##======================================================
-
-# ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
-export LESS="-iMFXR"
+## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
+#export LESS="-iMFXR"
 
 ##make less more friendly for non-text input files, see lesspipe(1)
-[ -x usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 ##  man in color
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -100,12 +77,37 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+## Color definitions
+export red="$(tput setaf 1)"
+export green="$(tput setaf 2)"
+export yellow="$(tput setaf 3)"
+export blue="$(tput setaf 4)"
+export magenta="$(tput setaf 5)"
+export cyan="$(tput setaf 6)"
+export white="$(tput setaf 7)"
+export b="$(tput bold)"
+export reset="$(tput sgr0)"
 
 ## Private alias
 ##======================================================
+
+## try exa
+if [ -n "$(command -v exa)" ]; then
+  alias l='exa'
+  alias ls='exa'
+  alias ll='exa -hl'
+  alias la='exa -ha'
+  alias lla='exa -hla'
+else
+   alias l='ls -h'
+   alias ll='ls -lh'
+   alias la='ls -ah'
+   alias lla='ls -lah'
+fi
+
 alias du='du -kh'
 
-## we need this..
+# we need this..
 alias rm='rm -vi'
 alias cp='cp -vi'
 alias ln='ln -vi'
@@ -126,36 +128,21 @@ alias cd..='cd ..'
 
 ##-----------------------------------------------------
 
-## try exa
-if [ -n "$(command -v exa)" ]; then
-	alias l='exa'
-	alias ls='exa'
-	alias ll='exa -hl'
-	alias la='exa -ha'
-	alias lla='exa -hla'
-else
-	alias l='ls -h'
-	alias ls='ls'
-	alias ll='ls -lh'
-	alias la='ls -ah'
-	alias lla='ls -lah'
-fi
-
-#alias grep='grep --color=auto'
-#alias egrep='egrep --color=auto'
-#alias fgrep='fgrep --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto -h'
+#alias l='ls -h'
+#alias ll='ls -lh'
+#alias la='ls -ah'
+#alias lla='ls -lah'
 
 alias mkdir='mkdir -p -v'
 
+alias apt='sudo apt'
 alias update='apt update && apt list --upgradable'
 alias upgrade='apt upgrade'
 
 ##  Private functions
 ##======================================================
 
-## extract 
+## extract
 extract () {
  if [ -f $1 ] ; then
    case $1 in
@@ -173,9 +160,9 @@ extract () {
        *)           echo "don't know how to extract '$1'..." ;;
     esac
  else
-   echo "'$1' is not a valid file!"
+  echo "'$1' is not a valid file!"
  fi
-}
+ }
 
 ## netinfo - shows network information for your system
 netinfo () {
@@ -199,3 +186,14 @@ netinfo () {
 #    . /etc/bash_completion
 #  fi
 #fi
+
+# Handle commands not found
+#if [ -x /data/data/com.termux/files/usr/libexec/termux/command-not-found ]; then
+#	command_not_found_handle() {
+#		/data/data/com.termux/files/usr/libexec/termux/command-not-found "$1"
+#	}
+#fi
+# Autocompletion
+#
+# cycle through all matches with 'TAB' key
+#bind 'TAB:menu-complete'

@@ -2,22 +2,27 @@
 ##   confidante
 ##   mbyshadow@protonmail.com
 
-# If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
 ##  Source global definitions
 ##======================================================
+if [ -f /etc/bash.bashrc ]; then
+    . /etc/bash.bashrc
+fi
 
-#if [ -f /etc/bashrc ]; then
-#  ./etc/bashrc   # --> Read /etc/bashrc, if present.
-#fi
-#~/.bash_allias
-#~/.bash_functions
-#~/.bash_style
+## this is the way
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+if [ -f ~/.bash_styles ]; then
+    . ~/.bash_styles
+fi
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 
-## check the window size after each command and, if necessary,
-## update the values of LINES and COLUMNS.
+## check the window size after each command and, if necessary,## update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 ## cd when entering just a path in the shell
 shopt -s autocd
@@ -78,17 +83,16 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 ## try exa
 if [ -n "$(command -v exa)" ]; then
-        alias l='exa'
-        alias ls='exa'
-        alias ll='exa -hl'
-        alias la='exa -ha'
-        alias lla='exa -hla'
+  alias l='exa'
+  alias ls='exa'
+  alias ll='exa -hl'
+  alias la='exa -ha'
+  alias lla='exa -hla'
 else
-        alias l='ls -h --color=auto'
-        alias ls='ls -h --color=auto'
-        alias ll='ls -lh  --color=auto'
-        alias la='ls -ah --color=auto'
-        alias lla='ls -lah --color=auto'
+   alias l='ls -h'
+   alias ll='ls -lh'
+   alias la='ls -ah'
+   alias lla='ls -lah'
 fi
 
 alias du='du -kh'
