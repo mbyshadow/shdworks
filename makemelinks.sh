@@ -14,9 +14,6 @@ ln -s -v shdworks/config/bash/.bash_functions ~/.bash_functions
 rm -v ~/.bash_styles
 ln -s shdworks/config/bash/.bash_styles ~/.bash_styles
 
-rm -v ~/.git-prompt.sh
-ln -s -v shdworks/config/.git-prompt.sh ~/.git-prompt.sh
-
 rm -v ~/.bash_profile
 ln -s -v shdworks/config/bash/.bash_profile ~/.bash_profile
 
@@ -31,7 +28,14 @@ ln -s -v shdworks/config/bash/.bashrc ~/.bashrc
 
 # ln git config files
 rm -v ~/.gitconfig
-ln -s -v shdworks/config/.gitconfig ~/.gitconfig
+ln -s -v shdworks/config/git/.gitconfig ~/.gitconfig
+
+rm -v ~/.git-prompt.sh
+#ln -s -v shdworks/config/git/.git-prompt.sh ~/.git-prompt.sh
+
+rm -v ~/.git-completion.bash
+ln -s -v shdworks/config/git/.git-completion.bash ~/.git-completion.bash
+
 
 # ln nano config files
 rm ~/.nanorc
