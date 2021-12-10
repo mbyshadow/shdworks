@@ -14,14 +14,18 @@ ln -s shdworks/config/bash/.bash_functions ~/.bash_functions
 rm ~/.bash_styles
 ln -s shdworks/config/bash/.bash_styles ~/.bash_styles
 
-rm ~/.bashrc
-ln -s shdworks/config/bash/.bashrc ~/.bashrc
+rm ~/.git-prompt.sh
+ln -s shdworks/config/bash/.git-prompt.sh ~/.git-prompt.sh
 
-#rm ~/.bash_profile
-#ln -s ./config/bash/.bash_profile ~/.bash_profile
+rm ~/.bash_profile
+ln -s ./config/bash/.bash_profile ~/.bash_profile
 
 #rm  ~/.bash_logout
 #ln -s ./config/bash/.bash_logout ~/.bash_logout
+
+#this we dont want  o more ok
+rm ~/.bashrc
+ln -s shdworks/config/bash/.bashrc ~/.bashrc
 
 #cat ./config/bash/makebashrc.txt >> ~/.bashrc
 

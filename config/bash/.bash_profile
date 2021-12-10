@@ -2,7 +2,6 @@
 # ~/.bash_profile
 #
 
-#[[ -f ~/.bashrc ]] && . ~/.bashrc
-
-## Add local bin to path
-#export PATH=$PATH:/home/nyancat/.usrnname /bin
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+fi
