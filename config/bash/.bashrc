@@ -10,18 +10,6 @@ if [ -f /etc/bash.bashrc ]; then
     . /etc/bash.bashrc
 fi
 
-## this is the way
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
-if [ -f ~/.bash_styles ]; then
-    . ~/.bash_styles
-fi
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-
 ## check the window size after each command and, if necessary,## update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 ## cd when entering just a path in the shell
@@ -77,58 +65,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-
-
-## Private alias
-##======================================================
-
-## try exa
-if [ -n "$(command -v exa)" ]; then
-  alias l='exa'
-  alias ls='exa'
-  alias ll='exa -hl'
-  alias la='exa -ha'
-  alias lla='exa -hla'
-else
-   alias l='ls -h'
-   alias ll='ls -lh'
-   alias la='ls -ah'
-   alias lla='ls -lah'
-fi
-
-alias du='du -kh'
-
-# we need this..
-alias rm='rm -vi'
-alias cp='cp -vi'
-alias ln='ln -vi'
-alias mv='mv -vi'
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
-alias path='echo -e ${PATH//:/\\n}'
-alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
-
-## spelling..
-alias l..='ls ..'
-alias cd..='cd ..'
-
-
-##-----------------------------------------------------
-
-#alias l='ls -h'
-#alias ll='ls -lh'
-#alias la='ls -ah'
-#alias lla='ls -lah'
-
-alias mkdir='mkdir -p -v'
-
-alias apt='sudo apt'
-alias update='apt update && apt list --upgradable'
-alias upgrade='apt upgrade'
 
 ##  Private functions
 ##======================================================
