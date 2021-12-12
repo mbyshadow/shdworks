@@ -9,11 +9,27 @@
 if [ -f /etc/bash.bashrc ]; then
     . /etc/bash.bashrc
 fi
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+if [ -f ~/.bash_styles ]; then
+    . ~/.bash_styles
+fi
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+#if [ -f ~/.git-prompt.sh ]; then
+#    . ~/.git-prompt.sh
+#fi
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
 
 ## check the window size after each command and, if necessary,## update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 ## cd when entering just a path in the shell
-shopt -s autocd
+shopt -s autocd ## fix/stop auto cd $env plz
 
 ##	bash_history
 ##======================================================

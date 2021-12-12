@@ -43,6 +43,6 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 alias mkdir='mkdir -p -v'
 
-alias apt='sudo apt'
+#alias apt='sudo apt'
 alias update='apt update && apt list --upgradable'
 alias upgrade='apt upgrade'

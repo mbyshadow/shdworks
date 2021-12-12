@@ -1,0 +1,51 @@
+{
+    "editor.accessibilitySupport": "off",
+    "editor.insertSpaces": true,
+    "editor.lineNumbers": "on",
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+        { "column": 80, "color": "#00A000" },
+        { "column": 100, "color": "#AAAA00" },
+        { "column": 120, "color": "#A00000" }
+    ],
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
+    "explorer.autoReveal": false,
+    "explorer.confirmDelete": true,
+    "explorer.confirmDragAndDrop": true,
+    "extensions.ignoreRecommendations": true,
+    "telemetry.telemetryLevel": "off",
+    "terminal.integrated.scrollback": 100000,
+    "update.mode": "none",
+    "window.zoomLevel": 0,
+    "workbench.colorCustomizations": { "editorRuler.foreground": "#B4003C" },
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.sideBar.location": "right",
+    "[shellscript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": false
+    },
+    "[php]": {
+        { "column": 72, "color": "#008000" },
+        { "column": 79, "color": "#A00000" }
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true
+    },
+    "[json]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": true
+    },
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+    "security.workspace.trust.banner": "never",
+    "security.workspace.trust.enabled": true
+}
