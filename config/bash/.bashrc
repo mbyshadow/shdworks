@@ -52,66 +52,8 @@ HISTFILESIZE=2000
 
 
 
-##  Color
-##======================================================
-# enable color support of ls, grep, ip.
-if [[ -x /usr/bin/dircolors ]]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias ip='ip --color=auto'
-    alias grep='grep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto -h'
-fi
-
-
-## ignore case, long prompt, exit if it fits on one screen, allow colors for ls and grep colors
-#export LESS="-iMFXR"
-
-##make less more friendly for non-text input files, see lesspipe(1)
-#[ -x usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-##  man in color
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
-##  Private functions
-##======================================================
-
-## extract
-extract () {
- if [ -f $1 ] ; then
-   case $1 in
-       *.tar.bz2)   tar xvjf $1    ;;
-       *.tar.gz)    tar xvzf $1    ;;
-       *.bz2)       bunzip2 $1     ;;
-       *.rar)       unrar x $1     ;;
-       *.gz)        gunzip $1      ;;
-       *.tar)       tar xvf $1     ;;
-       *.tbz2)      tar xvjf $1    ;;
-       *.tgz)       tar xvzf $1    ;;
-       *.zip)       unzip $1       ;;
-       *.Z)         uncompress $1  ;;
-       *.7z)        7z x $1        ;;
-       *)           echo "don't know how to extract '$1'..." ;;
-    esac
- else
-  echo "'$1' is not a valid file!"
- fi
- }
-
-##======================================================
-
-
 ## netinfo - shows network information for your system
-#netinfo () {
+## netinfo () {
 #  echo "--------------- Network Information ---------------"
 #  /sbin/ifconfig eth0 | grep 'inet' | cut -d: -f2 | awk '{print $2}'
 #  /sbin/ifconfig eth0 | grep 'broadcast' | awk '{print $4}'
@@ -120,15 +62,4 @@ extract () {
 #  myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
 #  echo "${myip}"
 #  echo "---------------------------------------------------"
-#}
-
-
-## enable programmable completion features.
-## should already be enabled somewhere, /etc/bash.bashrc, /etc/profile, /etc/bash.bashrc.
-#if ! shopt -oq posix; then
-#  if [ -f /usr/share/bash-completion/bash_completion ]; then
-#    . /usr/share/bash-completion/bash_completion
-#  elif [ -f /etc/bash_completion ]; then
-#    . /etc/bash_completion
-#  fi
-#fi
+#
