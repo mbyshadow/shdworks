@@ -18,9 +18,9 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-#if [ -f ~/.git-prompt.sh ]; then
-#    . ~/.git-prompt.sh
-#fi
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+fi
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
