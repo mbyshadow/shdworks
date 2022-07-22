@@ -1,0 +1,107 @@
+
+## this screen thing, not worth it ok
+## stop fuk the first ones
+##
+##nononnononononononono
+xterm*|Eterm|mlterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+termcapinfo rxvt-unicode ti@:te@     #enable SHIFT-PGUP / SHIFT-PGDOWN scroll
+#termcapinfo wy* CS=\E[?1h:CE=\E[?1l:vi=\E[?25l:ve=\E[?25h:VR=\E[?5h:VN=\E[?5l:cb=\E[1K:CD=\E[1J
+terminfo rxvt-unicode ti@:te@:
+term screen-256color
+defutf8 on
+setenv DISPLAY ':0'
+nonblock on
+vbell off
+msgwait 10
+##okok0k9kkokokokoo0kokokokok
+
+## change scroll bar to xterm
+## default on 'Ctrl+a [' 
+# termcapinfo xterm*|rxvt*|kterm*|Eterm* ti@:te@
+
+
+## Status bar
+truecolors on
+
+#backtick 0 5 5 "/bin/date" '+%Y-%m-%d'
+#backtick 1 5 5 "/bin/date" '+%H:%M'
+
+
+## First line statusbar pos. etc.
+hardstatus firstline 
+#hardstatus off
+#hardstatus alwayslastline
+
+
+## Add CPU idle/sustem/user/interrupt stats
+backtick 100 5 5 tail -1 /var/tmp/vermaden-stats-top
+caption always '%{= wk} %= %100` %='
+
+#hardstatus string "%w"
+#hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%?"            #B&W
+#hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%? %=%c %d/%m/%Y" #B&W & date&time
+#hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%{=b kw}%?%+w%? %=%c %d/%m/%Y" #B&W & date&time
+#hardstatus string '%{= R}[%{w}%H%{R}][%{w}%=%?%-Lw%?%{R}%n*%f%t%?(%u)%? %{w}%?%+Lw%?%?%=%{R}][%{w}%m/%d %{W}%C%A%{R}]'
+#hardstatus string "%{.kW}%-w%{.W}%n %t%{-}%+w %=%C %a "
+#hardstatus string "%{=b kw} %?%-Lw%?%{=br kw}[%n %t]%{=b kw}%?%+Lw%? %="
+#hardstatus alwayslastline '%{bk}[ %{W}%H %{b}][ %{w}%l%{b} ]   %{b}[%{w} %D %d.%m %c:%s%{b} ]'
+#hardstatus alwayslastline '%{bk}[%{W}%H%{b}] %{w} %l %= %n*%t%{-b r}%{w}%+w %= %{w}%d %D %{w}%c'
+hardstatus alwayslastline '%{wk}[ %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+#hardstatus alwayslastline '%{#00ff00}[ %H ][%{#ffffff}%= %{7}%?%-Lw%?%{1;0}%{1}(%{15}%n%f%t%?(%u)%?%{1;0}%{1})%{7}%?%+Lw%?%? %=%{#00ff00}][ %{#00a5ff}%{6}%0` %{#ffffff}%{7}%1`%{#00ff00} ]'
+
+
+
+#sorendition kw
+
+## Remove vertical bars
+rendition so =00
+
+## Hide horizontal bar
+caption string "%{03} "
+## Alt. no use rly,'
+##caption string "%{00}%3n %t"
+
+## if nano or others act up
+# altscreen on 
+## Alt. 
+#windowlist string "%4n %h%=%f"
+
+
+## this is binds for key 
+bind c screen 1 
+## !!! starts at 1, not 0.
+bind 0 select 10
+
+##f1-f10 selects screens 0-9
+bindkey -k k1 select 1
+bindkey -k k2 select 2
+bindkey -k k3 select 3
+bindkey -k k4 select 4
+bindkey -k k5 select 5
+bindkey -k k6 select 6
+bindkey -k k7 select 7
+bindkey -k k8 select 8
+bindkey -k k9 select 9
+bindkey -k k0 select 0
+
+# windows select with Shift-Fn. May not work in all terminals.
+# (screen only seems to understand up to FA)
+#bindkey -k F3 select 1
+#bindkey -k F4 select 2
+#bindkey -k F5 select 3
+#bindkey -k F6 select 4
+#bindkey -k F7 select 5
+#bindkey -k F8 select 6
+#bindkey -k F9 select 7
+#bindkey -k FA select 8
+
+bindkey "^[Od" prev  # change window with ctrl-left
+bindkey "^[Oc" next  # change window with ctrl-right
+
+bind = resize =
+bind + resize +1
+bind - resize -1
+
+##contains all hardcopies.
+#hardcopydir ~/.hardcopy
+#hardcopydir ~/.screen

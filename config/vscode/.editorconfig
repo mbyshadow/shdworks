@@ -1,0 +1,27 @@
+# editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[package.json]
+indent_style = space
+indent_size = 2
+
+[*.{md,css,yml}]
+indent_style = space
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 0
+
+# Git commit messages.
+[COMMIT_EDITMSG]
+max_line_length = 0
+trim_trailing_whitespace = false
